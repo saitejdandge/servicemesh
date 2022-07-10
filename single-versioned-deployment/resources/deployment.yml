@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: v1-deployment
+  namespace: myapp2
+  labels:
+    app: v1-deployment
+spec:
+  replicas: 8
+  selector:
+    matchLabels:
+      app: myapp2
+      version: v1
+  template:
+    metadata:
+      name: v1-pod
+      labels:
+        app: myapp2
+        version: v1
+    spec:
+      containers:
+        - name: v1
+          image: v1-new-app:0.0.1
+          imagePullPolicy: Never
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: v2-deployment
+  namespace: myapp2
+  labels:
+    app: v2-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: myapp2
+      version: v2
+  template:
+    metadata:
+      name: v2-pod
+      labels:
+        app: myapp2
+        version: v2
+    spec:
+      containers:
+        - name: v2
+          image: v2-new-app:0.0.1
+          imagePullPolicy: Never
+---
+
