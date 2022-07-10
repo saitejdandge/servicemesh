@@ -1,5 +1,9 @@
+#kubectl apply -k dir/.
+#kubectl apply -k single-versioned-deployment/argo-cd/.
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+namespace: argocd
 resources:
-  - resources/namespace.yml
+  - namespace.yml
   - https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+  - argo-cd.yml
