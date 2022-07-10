@@ -38,10 +38,10 @@ spec:
             subset: v1
             port:
               number: 4000
-          weight: 80
+          weight: 60
         - destination:
             host: single-svc
             subset: v2
             port:
               number: 4000
-          weight: 20
+          weight: 40

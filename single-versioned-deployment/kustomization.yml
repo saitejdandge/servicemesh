@@ -5,4 +5,4 @@ resources:
   - resources/deployment:0.0.2.yml
   - resources/single-service.yml
   - resources/destination-rule.yml
-  - resources/virtual-svc.yml
+  - resources/virtual-svc:0.0.1.yml
