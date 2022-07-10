@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/saitejdandge/servicemesh.git
     targetRevision: HEAD
-    path: single-versioned-deployment
+    path: single-versioned-deployment/app
   destination:
     server: https://kubernetes.default.svc
     namespace: myapp2
