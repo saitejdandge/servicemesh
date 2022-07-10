@@ -2,7 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - resources/namespace.yml
-  - resources/deployment:0.0.1.yml
+  - resources/deployment:0.0.2.yml
   - resources/single-service.yml
   - resources/destination-rule.yml
   - resources/virtual-svc.yml

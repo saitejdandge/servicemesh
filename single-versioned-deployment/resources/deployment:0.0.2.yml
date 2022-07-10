@@ -6,7 +6,7 @@ metadata:
   labels:
     app: v1-deployment
 spec:
-  replicas: 18
+  replicas: 10
   selector:
     matchLabels:
       app: myapp2
