@@ -1,0 +1,9 @@
+#  kubectl apply -k argo-rollout-canary/app/.
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: myapp3
+resources:
+  - resources/namespace.yml
+  - resources/services.yml
+  - resources/virtual-svc:0.0.1.yml
+  - resources/rollout:0.0.1.yml

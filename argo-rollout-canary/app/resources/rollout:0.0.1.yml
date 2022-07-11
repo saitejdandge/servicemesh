@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: rollout
+  labels:
+    app: rollout
+spec:
+  strategy:
+    canary:
+      canaryService: canary-svc
+      stableService: stable-svc
+      trafficRouting:
+        istio:
+          virtualService:
+            name: virtual-svc
+  template:
+    metadata:
+      labels:
+        app: myapp3
+    spec:
+      containers:
+        - name: v1
+          image: v1-new-app:0.0.1
+          imagePullPolicy: Never
+  replicas: 10
+  selector:
+    matchLabels:
+        app: myapp3
