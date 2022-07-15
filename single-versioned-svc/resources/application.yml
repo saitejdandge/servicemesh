@@ -7,7 +7,7 @@ spec:
   source:
     repoURL: https://github.com/saitejdandge/servicemesh.git
     targetRevision: HEAD
-    path: single-versioned-svc/app
+    path: single-versioned-svc
   destination:
     server: https://kubernetes.default.svc
   syncPolicy:
