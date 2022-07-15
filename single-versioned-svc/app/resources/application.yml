@@ -1,17 +1,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  namespace: myapp2
-  name: myapp2
+  name: single-versioned-svc
 spec:
-  project: default
+  project: service-mesh
   source:
     repoURL: https://github.com/saitejdandge/servicemesh.git
     targetRevision: HEAD
-    path: single-versioned-deployment/app
+    path: single-versioned-svc/app
   destination:
     server: https://kubernetes.default.svc
-    namespace: myapp2
   syncPolicy:
     syncOptions:
       - CreateNamespace=true

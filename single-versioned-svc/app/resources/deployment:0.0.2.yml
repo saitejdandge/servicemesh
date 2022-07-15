@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: v1-deployment
-  namespace: myapp2
   labels:
     app: v1-deployment
 spec:
@@ -29,7 +28,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: v2-deployment
-  namespace: myapp2
   labels:
     app: v2-deployment
 spec:

@@ -1,0 +1,12 @@
+#kubectl apply -k dir/.
+#kubectl apply -k single-versioned-deployment/argo-cd/.
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: single-versioned-svc
+resources:
+  - app/resources/namespace.yml
+  - app/resources/application.yml
+  - app/resources/deployment:0.0.2.yml
+  - app/resources/single-service.yml
+  - app/resources/destination-rule.yml
+  - app/resources/virtual-svc:0.0.1.yml
