@@ -1,0 +1,36 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: user-rollout
+  labels:
+    app: user-rollout
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+        version: v1
+    spec:
+      containers:
+        - name: user-service-container-v1
+          image: v1-new-app:0.0.1
+          imagePullPolicy: Never
+  strategy:
+    canary:
+      canaryService: user-service-canary
+      stableService: user-service-stable
+      steps:
+        - setWeight: 20
+        - pause: { }
+        - setWeight: 80
+        - setWeight: 100
+      trafficRouting:
+        istio:
+          virtualService:
+            name: my-virtual-service
+
+
