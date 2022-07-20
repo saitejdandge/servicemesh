@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: login-v2
+  labels:
+    app: login
+    version: v2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: login
+      version: v2
+  template:
+    spec:
+      containers:
+        - image: user-image:v2
+          name: login
+          imagePullPolicy: Never
+    metadata:
+      labels:
+        app: login
+        version: v2

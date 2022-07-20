@@ -1,0 +1,18 @@
+#kubectl apply -k dir/.
+#kubectl apply -k practise/.
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: user-management
+resources:
+  - resources/namespace.yml
+  - resources/login/deployments/login-deployment-1.yml
+  - resources/login/deployments/login-deployment-2.yml
+  - resources/login/services/login-svc.yml
+  - resources/login/services/destionation-rule.yml
+#  - resources/login/services/login-virtual-svc.yml
+  - resources/dashboard/deployments/dashboard-deployment-1.yml
+  - resources/dashboard/deployments/dashboard-deployment-2.yml
+  - resources/dashboard/services/dashboard-svc.yml
+  - resources/dashboard/services/destination-rule.yml
+#  - resources/dashboard/services/dashboard-virtual-svc.yml
+  - resources/gateway.yml
