@@ -1,0 +1,36 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: user-gateway
+spec:
+  selector:
+    istio: ingressgateway # use istio default controller
+  servers:
+    - port:
+        number: 80
+        name: http
+        protocol: HTTP
+      hosts:
+        - "*"
+---
+
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: user-management-vsvc
+spec:
+  hosts:
+    - "*"
+  gateways:
+    - user-gateway
+  http:
+    - match:
+        - uri:
+            prefix: /login
+      delegate:
+        name: login-virtual-service
+    - match:
+        - uri:
+            prefix: /dashboard
+      delegate:
+        name: dashboard-virtual-service

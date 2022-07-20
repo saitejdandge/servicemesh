@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dashboard-v1
+  labels:
+    app: dashboard
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dashboard
+      version: v1
+  template:
+    spec:
+      containers:
+        - image: user-image:v1
+          name: dashboard
+          imagePullPolicy: Never
+    metadata:
+      labels:
+        app: dashboard
+        version: v1
