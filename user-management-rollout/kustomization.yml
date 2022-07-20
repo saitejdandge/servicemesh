@@ -4,11 +4,11 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: user-management-rollout
 resources:
+  - resources/login/services/login-virtual-svc.yml
   - resources/namespace.yml
-#  - resources/login/rollout/login-rollout.yml
+  - resources/login/rollout/login-rollout.yml
   - resources/login/services/login-svc.yml
   - resources/login/services/login-destination-rule.yml
-  - resources/login/services/login-virtual-svc.yml
   - resources/dashboard/deployments/dashboard-deployment-1.yml
   - resources/dashboard/deployments/dashboard-deployment-2.yml
   - resources/dashboard/services/dashboard-svc.yml

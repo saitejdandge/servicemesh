@@ -4,7 +4,8 @@ metadata:
   name: login-virtual-service
 spec:
   http:
-    - route:
+    - name: primary
+      route:
         - destination:
             host: login
             subset: v1

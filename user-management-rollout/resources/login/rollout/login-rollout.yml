@@ -4,9 +4,8 @@ metadata:
   name: login-rollout
   labels:
     app: login
-    version: v1
 spec:
-  replicas: 4
+  replicas: 10
   selector:
     matchLabels:
       app: login
@@ -14,8 +13,8 @@ spec:
   template:
     spec:
       containers:
-        - image: user-image:v1
-          name: login
+        - image: user-image:v2
+          name: login-beta
           imagePullPolicy: Never
     metadata:
       labels:
@@ -25,14 +24,16 @@ spec:
     canary:
       steps:
         - setWeight: 20
-        - pause: {}
+        - pause: { }
         - setWeight: 80
-        - pause: {30}
+        - pause: { duration: 1m }
         - setWeight: 100
       trafficRouting:
         istio:
           virtualService:
             name: login-virtual-service
+            routes:
+              - primary
           destinationRule:
             name: login
             canarySubsetName: v2
