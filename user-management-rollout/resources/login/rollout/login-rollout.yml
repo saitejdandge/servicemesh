@@ -9,24 +9,24 @@ spec:
   selector:
     matchLabels:
       app: login
-      version: v1
   template:
     spec:
       containers:
-        - image: user-image:v2
-          name: login-beta
+        - image: user-image:v1
+          name: login-v2
           imagePullPolicy: Never
     metadata:
       labels:
         app: login
-        version: v1
   strategy:
     canary:
       steps:
         - setWeight: 20
         - pause: { }
+        - setWeight: 50
+        - pause: { }
         - setWeight: 80
-        - pause: { duration: 1m }
+        - pause: { }
         - setWeight: 100
       trafficRouting:
         istio:
